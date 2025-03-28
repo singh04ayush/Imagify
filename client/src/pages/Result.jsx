@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {assets} from '../assets/assets'
+import {motion} from 'framer-motion'
 
 const Result = () => {
 
