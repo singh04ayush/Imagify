@@ -9,12 +9,17 @@ const Result = () => {
   const[loading, setLoading] = useState(false)
   const [input, setInput] = useState('')
 
-  const onSubmitHandler = async(e) =>{
+  const onSubmitHandler = async(ev) =>{
 
   }
 
   return (
-    <form onSubmit={onSubmitHandler} className='flex flex-col min-h-[90vh] justify-center items-center'>
+    <motion.form
+    initial={{opacity:0.2, y:100}}
+    transition={{duration:1}}
+    whileInView={{opacity:1, y:0}}
+    viewport={{once:true}}
+    onSubmit={onSubmitHandler} className='flex flex-col min-h-[90vh] justify-center items-center'>
 
     <div>
       <div className='relative'>
@@ -40,7 +45,7 @@ const Result = () => {
       </div>
     }
 
-    </form>
+    </motion.form>
   )
 }
 
