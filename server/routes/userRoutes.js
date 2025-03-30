@@ -1,7 +1,11 @@
 import express from 'express'
-import {registerUser, loginUser} from '../controllers/userController.js'
+import {registerUser, loginUser, userCredits} from '../controllers/userController.js'
+import userAuth from '../middlewares/auth.js'
 
-const userRoute = express.Router()
+const userRouter = express.Router()
 
-userRoute.post('/register', registerUser)
-userRoute.post('/register', registerUser)
+userRouter.post('/register', registerUser)
+userRouter.post('/login', loginUser)
+userRouter.post('/credits', userAuth, userCredits)
+
+export default userRouter

@@ -7,7 +7,7 @@ const registerUser = async(req, res)=>{
         const {name, email, password} = req.body;
 
         if(!name || !email || !password){
-            return res.json({sucess:false, message: "Missing details"})
+            return res.json({sucess:false, message: "Missing details"});
         }
 
         const salt = await bcrypt.genSalt(10)
@@ -24,25 +24,25 @@ const registerUser = async(req, res)=>{
 
         const token = jwt.sign({id: user._id}, process.env.JWT_SECRET)
 
-        res.json({sucess:true, token, user: {name: user.name}})
+        res.json({sucess:true, token, user: {name: user.name}});
 
 
     } catch (error) {
         console.log(error)
-        res.json({sucess:false, message: error.message})
+        res.json({sucess:false, message: error.message});
     }
 }
 
 
 
 
-const loginUser = async (res, res) =>{
+const loginUser = async (req, res) =>{
     try {
         const {email, password} = req.body;
         const user = await userModel.findOne({email})
 
         if(!user){
-            return res.json({sucess:false, message:'user dors not exists'})
+            return res.json({sucess:false, message:'user does not exists'});
         }
 
         const isMatch = await bcrypt.compare(password, user.password)
@@ -50,13 +50,29 @@ const loginUser = async (res, res) =>{
         if(isMatch){
             const token = jwt.sign({id: user._id}, process.env.JWT_SECRET)
             
-            res.json({sucess:true, token, user: {name: user.name}})
+            res.json({sucess:true, token, user: {name: user.name}});
 
         }else{
-            return res.json({sucess:false, message:'invalid credentials'})
+            return res.json({sucess:false, message:'invalid credentials'});
         }
     } catch (error) {
-        console.log(error)
-        res.json({sucess:false, message: error.message})
+        console.log(error);
+        res.json({sucess:false, message: error.message});
     }
 }
+
+
+const userCredits = async(req, res)=>{
+    try {
+        const {userId} = req.body
+
+        const user = await userModel.findById(userId)
+        res.json({sucess:true, credits: user.creditBalance, user:{name:user.name}});
+    } catch (error) {
+        console.log(error)
+        res.json({sucess:false, message: error.message});
+    }
+}
+
+
+export {registerUser, loginUser, userCredits}
