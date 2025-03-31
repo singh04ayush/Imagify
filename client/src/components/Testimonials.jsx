@@ -16,7 +16,7 @@ const Testimonials = () => {
                     <img src={testimonail.image} alt="" className='rounded-full w-14' />
                     <h2 className='text-xl font-semibold mt-3'>{testimonail.name}</h2>
                     <p className='text-gray-500 mb-4'>{testimonail.role}</p>
-                    <div classname='flex mb-4'>
+                    <div className='flex mb-4'>
                         {Array(testimonail.stars).fill().map((item, index)=>(
                             <img key={index} src={assets.rating_star} alt="" />
 

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {assets} from '../assets/assets'
 import {motion} from 'framer-motion'
+import { AppContext } from '../context/AppContext'
 
 const Result = () => {
 
@@ -9,7 +10,20 @@ const Result = () => {
   const[loading, setLoading] = useState(false)
   const [input, setInput] = useState('')
 
-  const onSubmitHandler = async(ev) =>{
+  const {generateImage} = useContext(AppContext)
+
+  const onSubmitHandler = async(e) =>{
+    e.preventDefault()
+    setLoading(true)
+
+    if(input){
+      const image = await generateImage(input)
+      if(image){
+        setIsImageLoaded(true)
+        setImage(image)
+      }
+    }
+    setLoading(false)
 
   }
 
@@ -23,7 +37,7 @@ const Result = () => {
 
     <div>
       <div className='relative'>
-        <img src={assets.sample_img_1} alt="" className='max-w-sm rounded' />
+        <img src={image} alt="" className='max-w-sm rounded' />
         <span className={`absolute bottom-0 h-1 bg-blue-500 ${loading ? 'w-full transistion-all duration-[10s]' : 'w-0'}`}></span>
       </div>
       <p className={!loading ? 'hidden' : ''}>Loading...</p>
