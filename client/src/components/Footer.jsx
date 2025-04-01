@@ -9,7 +9,7 @@ const Footer = () => {
 
       <p className='flex-1 border-l border-gray-400 pl-4 text-sm text-gray-500 max-sm:hidden'>Copyright @AyushSingh | All right reserved</p>
 
-      <div className='flex gap-2.5'>
+      <div className='flex gap-2.7'>
         <img src={assets.facebook_icon} alt="" width={35} />
         <img src={assets.twitter_icon} alt="" width={35} />
         <img src={assets.instagram_icon} alt="" width={35} />
