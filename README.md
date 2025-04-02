@@ -66,6 +66,7 @@ cd imagify
 ```
 
 ### 2. Backend Setup
+
 ```bash
 # Navigate to server directory
 cd server
