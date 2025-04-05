@@ -4,7 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 
 const Navbar = () => {
-    const { user, setShowLogin } = useContext(AppContext);
+    const { user, setShowLogin, logout } = useContext(AppContext);
     const navigate = useNavigate();
     const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
@@ -80,7 +80,7 @@ const Navbar = () => {
                                         <button onClick={() => navigate('/buy')} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
                                             Upgrade Plan
                                         </button>
-                                        <button onClick={() => {}} className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+                                        <button onClick={logout} className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50">
                                             Sign out
                                         </button>
                                     </div>
