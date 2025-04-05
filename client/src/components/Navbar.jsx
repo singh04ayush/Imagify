@@ -90,7 +90,7 @@ const Navbar = () => {
                             <>
                                 <button
                                     onClick={() => setShowLogin(true)}
-                                    className="bg-[#4B6BFB] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#3b54d9] transition-all duration-200 hover:shadow-md hover:scale-105"
+                                    className="hidden md:block bg-[#4B6BFB] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#3b54d9] transition-all duration-200 hover:shadow-md hover:scale-105"
                                 >
                                     Login
                                 </button>
@@ -137,6 +137,17 @@ const Navbar = () => {
                             {item.name}
                         </Link>
                     ))}
+                    {!user && (
+                        <button
+                            onClick={() => {
+                                setShowLogin(true);
+                                setIsOpen(false);
+                            }}
+                            className="w-full text-left px-3 py-2 rounded-md text-base font-medium bg-[#4B6BFB] text-white hover:bg-[#3b54d9] transition-colors"
+                        >
+                            Login
+                        </button>
+                    )}
                 </div>
             </div>
         </div>
