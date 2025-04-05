@@ -1,15 +1,15 @@
 <div align="center">
 
-<img src="client/public/favicon.svg" alt="Imagify Logo" width="180"/>
+<img src="./frontend/src/assets/logo.png" alt="Imagify Logo" width="180"/>
 
-# ✨ Imagify - Transform Your Images Magically ✨
+# ✨ Imagify - Transform Your Ideas Into Images ✨
 
-> 🎨 Where Creativity Meets Technology
+> 🎨 AI-Powered Text-to-Image Generation
 
-[![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=for-the-badge&logo=react&logoColor=white&labelColor=20232A)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-6.2.0-646CFF?style=for-the-badge&logo=vite&logoColor=white&labelColor=20232A)](https://vitejs.dev/)
-[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0.15-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white&labelColor=20232A)](https://tailwindcss.com/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white&labelColor=20232A)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white&labelColor=20232A)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-4.4.5-646CFF?style=for-the-badge&logo=vite&logoColor=white&labelColor=20232A)](https://vitejs.dev/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.3.3-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white&labelColor=20232A)](https://tailwindcss.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-18.16.1-339933?style=for-the-badge&logo=node.js&logoColor=white&labelColor=20232A)](https://nodejs.org/)
 
 <p align="center">
   <a href="#features">Features</a> •
@@ -18,9 +18,9 @@
   <a href="#contributing">Contributing</a>
 </p>
 
-[![GitHub stars](https://img.shields.io/github/stars/singh04ayush/imagify?style=social)](https://github.com/singh04ayush/imagify/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/singh04ayush/imagify?style=social)](https://github.com/singh04ayush/imagify/network/members)
-[![GitHub issues](https://img.shields.io/github/issues/singh04ayush/imagify?style=social)](https://github.com/singh04ayush/imagify/issues)
+[![GitHub stars](https://img.shields.io/github/stars/singh04ayush/Imagify?style=social)](https://github.com/singh04ayush/Imagify/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/singh04ayush/Imagify?style=social)](https://github.com/singh04ayush/Imagify/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/singh04ayush/Imagify?style=social)](https://github.com/singh04ayush/Imagify/issues)
 
 ---
 
@@ -30,51 +30,55 @@
 
 <div align="center">
 
-| 🖼️ Image Tools | 🎨 Effects | 💾 Export Options |
-|----------------|------------|------------------|
-| Crop & Resize  | Filters    | PNG Export       |
-| Rotate & Flip  | Adjustments| JPG Export       |
-| Brightness     | Presets    | SVG Export       |
-| Contrast       | Custom     | PDF Export       |
+| 🖌️ Text-to-Image | 🔐 User Features | 💾 Management |
+|------------------|-----------------|---------------|
+| AI Generation    | Authentication  | Image History |
+| Prompt Interface | User Profiles   | Downloads     |
+| Style Selection  | Secure Storage  | Viewing       |
+| High Resolution  | JWT Security    | Deletion      |
 
 </div>
 
-- 🎯 **Real-time Preview**: See your changes instantly
-- 🚀 **Fast Processing**: Optimized for performance
-- 📱 **Responsive Design**: Works on all devices
-- 🔒 **Secure Processing**: Your images stay private
-- 🌈 **Advanced Filters**: Professional-grade effects
-- 💡 **Smart Tools**: AI-powered enhancements
-- 🎨 **Custom Presets**: Save your favorite styles
-- 🔄 **History**: Undo/redo your changes
+- 🎯 **DALL·E Integration**: Generate images using OpenAI's powerful DALL·E model
+- 🚀 **Fast Processing**: Optimized image generation and delivery
+- 📱 **Responsive Design**: Works seamlessly on mobile and desktop
+- 🔒 **Secure Authentication**: Keep your creations private and accessible
+- 🌈 **Style Options**: Choose from various artistic styles
+- 💡 **Intuitive Interface**: Simple, user-friendly design
+- 🎨 **High-Quality Output**: Create professional-looking images
+- 🔄 **Image Management**: Access and manage your image history
 
 ## 🚀 Quick Start
 
 <div align="left">
 
 ### Prerequisites
-- Node.js (v18 or higher)
-- npm (v9 or higher)
-- Git
+- Node.js (v14.0.0 or higher)
+- npm (v6 or higher)
+- MongoDB (local or Atlas)
+- OpenAI API key
 
 </div>
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/singh04ayush/imagify.git
-cd imagify
+git clone https://github.com/singh04ayush/Imagify.git
+cd Imagify
 ```
 
 ### 2. Backend Setup
 ```bash
-# Navigate to server directory
-cd server
+# Navigate to backend directory
+cd backend
 
 # Install dependencies
 npm install
 
-# Create .env file
-cp .env.example .env
+# Create .env file with the following variables:
+# PORT=5000
+# MONGODB_URL=your_mongodb_connection_string
+# JWT_SECRET=your_jwt_secret
+# OPENAI_API_KEY=your_openai_api_key
 
 # Start the server
 npm run dev
@@ -83,8 +87,8 @@ npm run dev
 ### 3. Frontend Setup
 ```bash
 # Open a new terminal
-# Navigate to client directory
-cd client
+# Navigate to frontend directory
+cd frontend
 
 # Install dependencies
 npm install
@@ -105,16 +109,16 @@ npm run dev
 |---------|-------------|
 | `npm run dev` | Start development server |
 | `npm run build` | Build for production |
-| `npm run lint` | Run ESLint |
-| `npm run test` | Run tests |
+| `npm start` | Run production server (backend) |
 
 ### Environment Variables
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `PORT` | Server port | 5000 |
-| `MONGODB_URI` | MongoDB connection string | - |
-| `JWT_SECRET` | JWT secret key | - |
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `PORT` | Server port | Yes |
+| `MONGODB_URL` | MongoDB connection string | Yes |
+| `JWT_SECRET` | JWT secret key | Yes |
+| `OPENAI_API_KEY` | OpenAI API key | Yes |
 
 </div>
 
@@ -124,10 +128,10 @@ npm run dev
 
 | Step | Action | Description |
 |------|--------|-------------|
-| 1️⃣ | Upload | Drag & drop or click to upload |
-| 2️⃣ | Edit | Use tools to modify your image |
-| 3️⃣ | Preview | See changes in real-time |
-| 4️⃣ | Export | Save in your preferred format |
+| 1️⃣ | Register/Login | Create an account or sign in |
+| 2️⃣ | Enter Prompt | Describe the image you want |
+| 3️⃣ | Generate | Click generate to create your image |
+| 4️⃣ | Download | Save your creation to your device |
 
 </div>
 
@@ -136,15 +140,16 @@ npm run dev
 <div align="center">
 
 ### Frontend
-![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=flat-square&logo=react&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-6.2.0-646CFF?style=flat-square&logo=vite&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0.15-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0.0-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=flat-square&logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-4.4.5-646CFF?style=flat-square&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.3.3-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-6.15.0-CA4245?style=flat-square&logo=react-router&logoColor=white)
 
 ### Backend
-![Node.js](https://img.shields.io/badge/Node.js-20.0.0-339933?style=flat-square&logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/Express-4.18.0-000000?style=flat-square&logo=express&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-18.16.1-339933?style=flat-square&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express-4.18.2-000000?style=flat-square&logo=express&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-6.0.0-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-9.0.0-000000?style=flat-square&logo=json-web-tokens&logoColor=white)
 
 </div>
 
@@ -181,8 +186,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 | Resource | Description |
 |----------|-------------|
-| [Heroicons](https://heroicons.com/) | Beautiful icons |
-| [TailwindCSS](https://tailwindcss.com/) | Utility-first CSS framework |
+| [OpenAI](https://openai.com/) | DALL·E API provider |
+| [Tailwind CSS](https://tailwindcss.com/) | Utility-first CSS framework |
 | [React Community](https://reactjs.org/community) | Amazing React ecosystem |
 
 </div>
@@ -191,9 +196,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-### Contributed with ❤️ by [ phoenixdev100 ]
+### Contributed with ❤️ by [Ayush Singh](https://github.com/singh04ayush)
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/phoenixdev100?style=social)](https://twitter.com/phoenixdev100)
-[![GitHub Follow](https://img.shields.io/github/followers/phoenixdev100?style=social)](https://github.com/phoenixdev100)
+[![GitHub Follow](https://img.shields.io/github/followers/singh04ayush?style=social)](https://github.com/singh04ayush)
 
-</div> 
+</div>
