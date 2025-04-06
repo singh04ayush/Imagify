@@ -51,7 +51,7 @@ const Navbar = () => {
                         {user ? (
                             <div className="flex items-center space-x-4">
                                 <button 
-                                    onClick={() => navigate('/create')}
+                                    onClick={() => navigate('/result')}
                                     className="hidden sm:flex items-center space-x-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-full hover:bg-blue-100 transition-colors duration-200"
                                 >
                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
