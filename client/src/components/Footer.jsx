@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <footer className="bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-8 sm:gap-y-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8 xl:grid-cols-12 gap-x-2 gap-y-4 sm:gap-y-12">
                     {/* Brand Section */}
                     <div className="lg:col-span-4">
                         <div className="flex items-center gap-2 mb-4 sm:mb-6">
@@ -95,7 +95,7 @@ const Footer = () => {
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 text-[14px] sm:text-[15px] text-gray-600 bg-white border border-gray-200 rounded-l-lg focus:outline-none focus:border-blue-500"
+                                className="sm:max-w-40 lg:max-w-100 flex-1 px-3 sm:px-4 py-2.5 sm:py-3 text-[14px] sm:text-[15px] text-gray-600 bg-white border border-gray-200 rounded-l-lg focus:outline-none focus:border-blue-500"
                             />
                             <button
                                 type="submit"
