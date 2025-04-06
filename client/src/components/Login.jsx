@@ -51,9 +51,13 @@ const Login = () => {
   }
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hiden';
+    const navbar = document.getElementById('sticky');
+    navbar.style.opacity=0.05;
     return () => {
       document.body.style.overflow = 'unset';
+      navbar.style.opacity=1;
+      
     }
   }, [])
 
