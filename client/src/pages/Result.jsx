@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {assets} from '../assets/assets'
 import {motion} from 'framer-motion'
 import { AppContext } from '../context/AppContext'
@@ -26,7 +26,9 @@ const Result = () => {
     setLoading(false)
 
   }
-
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   return (
     <motion.form
     initial={{opacity:0.2, y:100}}
