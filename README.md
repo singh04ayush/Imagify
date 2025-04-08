@@ -73,8 +73,9 @@ cd server
 # Install dependencies
 npm install
 
-# Create .env file
-cp .env.example .env
+# Create .env file in the server Folder
+
+#Add the required MongoDb URL and other important URL in the .env folder
 
 # Start the server
 npm run dev
@@ -105,8 +106,6 @@ npm run dev
 |---------|-------------|
 | `npm run dev` | Start development server |
 | `npm run build` | Build for production |
-| `npm run lint` | Run ESLint |
-| `npm run test` | Run tests |
 
 ### Environment Variables
 
@@ -118,18 +117,6 @@ npm run dev
 
 </div>
 
-## 💻 Usage Guide
-
-<div align="center">
-
-| Step | Action | Description |
-|------|--------|-------------|
-| 1️⃣ | Upload | Drag & drop or click to upload |
-| 2️⃣ | Edit | Use tools to modify your image |
-| 3️⃣ | Preview | See changes in real-time |
-| 4️⃣ | Export | Save in your preferred format |
-
-</div>
 
 ## 🛠️ Tech Stack
 
@@ -191,9 +178,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-### Contributed with ❤️ by [ phoenixdev100 ]
+### Contributed with ❤️ by [ singh04ayush ]
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/phoenixdev100?style=social)](https://twitter.com/phoenixdev100)
-[![GitHub Follow](https://img.shields.io/github/followers/phoenixdev100?style=social)](https://github.com/phoenixdev100)
+[![GitHub Follow](https://img.shields.io/github/followers/singh04ayush?style=social)](https://github.com/singh04ayush)
 
 </div> 
