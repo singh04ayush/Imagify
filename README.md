@@ -28,25 +28,12 @@
 
 ## ✨ Features
 
-<div align="center">
-
-| 🖼️ Image Tools | 🎨 Effects | 💾 Export Options |
-|----------------|------------|------------------|
-| Crop & Resize  | Filters    | PNG Export       |
-| Rotate & Flip  | Adjustments| JPG Export       |
-| Brightness     | Presets    | SVG Export       |
-| Contrast       | Custom     | PDF Export       |
-
-</div>
-
-- 🎯 **Real-time Preview**: See your changes instantly
 - 🚀 **Fast Processing**: Optimized for performance
 - 📱 **Responsive Design**: Works on all devices
 - 🔒 **Secure Processing**: Your images stay private
-- 🌈 **Advanced Filters**: Professional-grade effects
-- 💡 **Smart Tools**: AI-powered enhancements
-- 🎨 **Custom Presets**: Save your favorite styles
-- 🔄 **History**: Undo/redo your changes
+- 💡 **AI**: AI-powered Images
+
+
 
 ## 🚀 Quick Start
 
@@ -75,10 +62,10 @@ npm install
 
 # Create .env file in the server Folder
 
-#Add the required MongoDb URL and other important URL in the .env folder
+# Add the required MongoDb URL and other important URL in the .env folder
 
 # Start the server
-npm run dev
+npm run server
 ```
 
 ### 3. Frontend Setup
@@ -89,6 +76,9 @@ cd client
 
 # Install dependencies
 npm install
+
+# If vite not installed
+npm install vite@latest
 
 # Start the development server
 npm run dev
@@ -104,8 +94,8 @@ npm run dev
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
+| `npm run server` | Starts backend |
+| `npm run dev` | Starts frontend |
 
 ### Environment Variables
 
@@ -126,7 +116,7 @@ npm run dev
 ![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=flat-square&logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-6.2.0-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0.15-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0.0-3178C6?style=flat-square&logo=typescript&logoColor=white)
+
 
 ### Backend
 ![Node.js](https://img.shields.io/badge/Node.js-20.0.0-339933?style=flat-square&logo=node.js&logoColor=white)
