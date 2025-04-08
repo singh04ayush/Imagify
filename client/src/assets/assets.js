@@ -18,6 +18,8 @@ import cross_icon from './cross_icon.svg'
 import star_group from './star_group.png'
 import credit_star from './credit_star.svg'
 import profile_icon from './profile_icon.png'
+import github_icon from './github_icon.svg'
+import linkedin_icon from './linkedin_icon.svg'
 
 export const assets = {
     logo,
@@ -34,7 +36,9 @@ export const assets = {
     cross_icon,
     star_group,
     credit_star,
-    profile_icon
+    profile_icon,
+    github_icon,
+    linkedin_icon
 }
 
 export const stepsData = [
@@ -82,20 +86,20 @@ export const testimonialsData = [
 export const plans = [
     {
       id: 'Basic',
-      price: 10,
-      credits: 100,
+      price: 0,
+      credits: 0,
       desc: 'Best for personal use.'
     },
     {
       id: 'Advanced',
-      price: 50,
-      credits: 500,
+      price: 0,
+      credits: 0,
       desc: 'Best for business use.'
     },
     {
       id: 'Business',
-      price: 250,
-      credits: 5000,
+      price: 0,
+      credits: 0,
       desc: 'Best for enterprise use.'
     },
   ]

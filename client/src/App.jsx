@@ -5,10 +5,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import Home from './pages/Home'
 import Result from './pages/Result'
 import BuyCredit from './pages/BuyCredit'
+import Gallery from './pages/Gallery'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import { AppContext } from './context/AppContext'
+import Features from './pages/Features';
 
 const App = () => {
 
@@ -23,6 +25,8 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/result' element={<Result />} />
         <Route path='/buy' element={<BuyCredit />} />
+        <Route path='/gallery' element={<Gallery />} />
+        <Route path='/features' element={<Features />} />
       </Routes>
       <Footer />
     </div>

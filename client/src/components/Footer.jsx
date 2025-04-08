@@ -19,13 +19,13 @@ const Footer = () => {
                             Turn your imagination into visual art in seconds with our AI-powered image generation platform.
                         </p>
                         <div className="flex items-center gap-3 sm:gap-4">
-                            <a href="#" className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
-                                <img src={assets.facebook_icon} alt="Facebook" className="w-4 sm:w-5 h-4 sm:h-5" />
+                            <a href="https://github.com/singh04ayush/Imagify" className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
+                                <img src={assets.github_icon} alt="github" className="w-4 sm:w-5 h-4 sm:h-5" />
                             </a>
-                            <a href="#" className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
-                                <img src={assets.twitter_icon} alt="Twitter" className="w-4 sm:w-5 h-4 sm:h-5" />
+                            <a href="https://www.linkedin.com/in/ayush-singh-87b3682a5/" className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
+                                <img src={assets.linkedin_icon} alt="linkedin" className="w-4 sm:w-5 h-4 sm:h-5" />
                             </a>
-                            <a href="#" className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
+                            <a href="https://www.instagram.com/singh04_ayush/" className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
                                 <img src={assets.instagram_icon} alt="Instagram" className="w-4 sm:w-5 h-4 sm:h-5" />
                             </a>
                         </div>
