@@ -89,7 +89,7 @@ const Navbar = () => {
                         {user ? (
                             <div className="flex items-center space-x-4">
                                 <button 
-                                    onClick={() => navigate('/create')}
+                                    onClick={() => navigate('/result')}
                                     className="hidden sm:flex items-center space-x-2 px-4 py-2 bg-blue-50/50 text-blue-600 rounded-full hover:bg-blue-100/50 transition-colors duration-200"
                                     aria-label="Create new image"
                                 >
