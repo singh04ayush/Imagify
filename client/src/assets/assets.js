@@ -61,25 +61,25 @@ export const stepsData = [
 
 export const testimonialsData = [
     {
-        image:profile_img_1,
-        name:'Donald Jackman',
-        role:'Graphic Designer',
-        stars:5,
-        text:`I've been using bg.removal for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.`
+        image: profile_img_1,
+        name: 'Sarah Chen',
+        role: 'Digital Artist',
+        stars: 5,
+        text: "Imagify has revolutionized my creative process. The AI understands artistic nuances and produces stunning results that align perfectly with my vision. A game-changer for digital artists!"
     },
     {
-        image:profile_img_2,
-        name:'Richard Nelson',
-        role:'Content Creator',
-        stars:4,
-        text:`I've been using bg.removal for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.`
+        image: profile_img_2,
+        name: 'Marcus Rodriguez',
+        role: 'Marketing Director',
+        stars: 5,
+        text: "We use Imagify daily for our marketing campaigns. The speed and quality of generated images are exceptional, saving us countless hours on content creation. Highly recommended!"
     },
     {
-        image:profile_img_1,
-        name:'Donald Jackman',
-        role:' Graphic Designer',
-        stars:5,
-        text:`I've been using bg.removal for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.`
+        image: profile_img_1,
+        name: 'Emily Parker',
+        role: 'UI/UX Designer',
+        stars: 5,
+        text: "The versatility of Imagify is incredible. From mockups to concept art, it helps me visualize designs quickly. The intuitive interface makes it a joy to use in my design workflow."
     },
 ]
 
