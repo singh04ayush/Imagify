@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import {assets} from '../assets/assets'
 import {motion} from 'framer-motion'
 import { AppContext } from '../context/AppContext'
@@ -19,7 +19,18 @@ const ChevronIcon = ({ open }) => (
 //Custom Dropdown 
 const CustomDropdown = ({format = '',setFormat = () =>{},formats = []}) => {
   const [open, setOpen] = useState(false)
+  const dropdownRef = useRef(null);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   return (
     <div className="relative inline-block">
       <button
@@ -33,7 +44,7 @@ const CustomDropdown = ({format = '',setFormat = () =>{},formats = []}) => {
       </button>
 
       {open && (
-        <div className="absolute rounded-xl z-5 mt-1 w-40 bg-white border border-zinc-250 shadow-lg">
+        <div ref={dropdownRef} className="absolute rounded-xl z-5 mt-1 w-40 bg-white border border-zinc-250 shadow-lg">
           {formats.map((fmt) => (
             <div
               key={fmt}
