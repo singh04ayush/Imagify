@@ -113,8 +113,8 @@ const Result = () => {
       downloadImage(blob)
     }else{
       canvas.toBlob((blob) => {
-        if (blob) downloadImage(blob, extension);
-        else console.error("Failed to convert canvas to blob.");
+        if (blob) downloadImage(blob, extension)
+        else console.error("Failed to convert canvas to blob.")
         }, `image/${extension}`)
     }
   };
