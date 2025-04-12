@@ -13,6 +13,8 @@ const userAuth = async(req, res, next)=>{
 
         if(tokenDecode.id){
             req.body.userId = tokenDecode.id;
+            req.user = { id: tokenDecode.id };
+            console.log('Auth middleware: User authenticated with ID:', tokenDecode.id);
         }else{
             return res.json({success:false, message:'Not Authorize. Login again'})
         }
@@ -20,6 +22,7 @@ const userAuth = async(req, res, next)=>{
         next();
 
     } catch (error) {
+        console.error('Auth middleware error:', error);
         return res.json({success:false, message:error.message});
     }
 };
