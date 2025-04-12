@@ -18,20 +18,32 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       if (!token) {
-        setError('No authentication token found');
+        setError('Authentication required. Please login.');
         setIsLoading(false);
+        navigate('/');
         return;
       }
 
       try {
+        console.log('Fetching dashboard data with token:', token ? 'Yes' : 'No');
+        
         const [creditsResponse, generationsResponse] = await Promise.all([
           axios.get(`${backendUrl}/api/user/credits`, {
-            headers: { token }
+            headers: { 
+              token,
+              'Content-Type': 'application/json'
+            }
           }),
           axios.get(`${backendUrl}/api/image/user-generations`, {
-            headers: { token }
+            headers: { 
+              token,
+              'Content-Type': 'application/json'
+            }
           })
         ]);
+
+        console.log('Credits response:', creditsResponse.data);
+        console.log('Generations response:', generationsResponse.data);
 
         if (creditsResponse.data.success && generationsResponse.data.success) {
           setStats({
@@ -41,20 +53,29 @@ const Dashboard = () => {
           });
           setError(null);
         } else {
-          setError('Failed to fetch dashboard data');
-          toast.error('Failed to load dashboard data');
+          const errorMessage = creditsResponse.data.message || generationsResponse.data.message || 'Failed to fetch dashboard data';
+          console.error('Dashboard data error:', errorMessage);
+          setError(errorMessage);
+          if (errorMessage.includes('Authentication') || errorMessage.includes('login')) {
+            navigate('/');
+          }
+          toast.error(errorMessage);
         }
       } catch (error) {
         console.error('Dashboard data fetch error:', error);
-        setError('Failed to load dashboard data');
-        toast.error(error.response?.data?.message || 'Failed to load dashboard data');
+        const errorMessage = error.response?.data?.message || 'Failed to load dashboard data';
+        setError(errorMessage);
+        if (error.response?.status === 401 || errorMessage.includes('Authentication') || errorMessage.includes('login')) {
+          navigate('/');
+        }
+        toast.error(errorMessage);
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchDashboardData();
-  }, [token, backendUrl]);
+  }, [token, backendUrl, navigate]);
 
   const handleGenerateClick = () => {
     navigate('/result');
