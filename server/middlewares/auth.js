@@ -3,7 +3,11 @@ import jwt from 'jsonwebtoken'
 const userAuth = async(req, res, next) => {
     try {
         const { token } = req.headers;
-        console.log('Auth middleware: Received token:', token ? 'Yes' : 'No');
+
+        // Only log in non-production environments
+        if (process.env.NODE_ENV !== 'production') {
+            console.log('Auth middleware: Token received:', !!token);
+        }
 
         if (!token) {
             console.error('Auth middleware: No token provided');
@@ -14,7 +18,11 @@ const userAuth = async(req, res, next) => {
         }
 
         const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);
-        console.log('Auth middleware: Token verified:', tokenDecode ? 'Yes' : 'No');
+
+        // Only log in non-production environments
+        if (process.env.NODE_ENV !== 'production') {
+            console.log('Auth middleware: Token verified:', !!tokenDecode);
+        }
 
         if (!tokenDecode || !tokenDecode.id) {
             console.error('Auth middleware: Invalid token payload');
@@ -25,11 +33,18 @@ const userAuth = async(req, res, next) => {
         }
 
         req.user = { id: tokenDecode.id };
-        console.log('Auth middleware: User authenticated with ID:', tokenDecode.id);
+
+        // Only log in non-production environments
+        if (process.env.NODE_ENV !== 'production') {
+            console.log('Auth middleware: User authenticated with ID:', tokenDecode.id);
+        }
+
         next();
 
     } catch (error) {
-        console.error('Auth middleware error:', error);
+        // Error logging is still important in production, but we'll sanitize the output
+        console.error('Auth middleware error:', error.name);
+        
         if (error.name === 'JsonWebTokenError') {
             return res.status(401).json({
                 success: false,
