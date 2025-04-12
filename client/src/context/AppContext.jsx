@@ -15,6 +15,8 @@ const AppContextProvider = (props) => {
 
     const navigate = useNavigate()
 
+    const isAuthenticated = !!token;
+
     const loadCreditsData = async () => {
         try {
             const { data } = await axios.get(backendUrl + '/api/user/credits', { headers: { token } })
@@ -65,7 +67,7 @@ const AppContextProvider = (props) => {
     }, [token])
 
     const value = {
-        user, setUser, showLogin, setShowLogin, backendUrl, token, setToken, credit, setCredit, loadCreditsData, logout, generateImage
+        user, setUser, showLogin, setShowLogin, backendUrl, token, setToken, credit, setCredit, loadCreditsData, logout, generateImage, isAuthenticated
     }
 
     return (

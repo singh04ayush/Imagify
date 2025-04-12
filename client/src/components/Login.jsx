@@ -4,11 +4,13 @@ import { AppContext } from '../context/AppContext'
 import { motion } from 'framer-motion'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
   const [state, setState] = useState('Login')
   const { setShowLogin, backendUrl, setToken, setUser } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -27,6 +29,7 @@ const Login = () => {
           localStorage.setItem('token', data.token)
           window.scrollTo({ top: 0, behavior: 'smooth' });
           setShowLogin(false)
+          navigate('/dashboard')
         } else {
           toast.error(data.message)
         }
@@ -39,6 +42,7 @@ const Login = () => {
           setUser(data.user)
           localStorage.setItem('token', data.token)
           setShowLogin(false)
+          navigate('/dashboard')
         } else {
           toast.error(data.message)
         }
@@ -52,8 +56,11 @@ const Login = () => {
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
+    const navbar = document.getElementById('nav-bar')
+    navbar.style.opacity = 0.05
     return () => {
       document.body.style.overflow = 'unset';
+      navbar.style.opacity = 1
     }
   }, [])
 
