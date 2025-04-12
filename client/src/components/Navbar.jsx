@@ -128,6 +128,7 @@ const Navbar = () => {
                                             isProfileOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'
                                         }`}
                                         role="menu"
+                                        onClick={() => setIsProfileOpen(false)}
                                     >
                                         <div className="px-4 py-2">
                                             <p className="text-sm font-medium text-gray-900">{user.name}</p>

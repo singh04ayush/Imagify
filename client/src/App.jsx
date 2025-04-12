@@ -1,5 +1,5 @@
-import React, {useContext} from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import React, {useContext, useEffect} from 'react'
+import { Routes, Route, Navigate, useLocation} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 
 import Home from './pages/Home'
@@ -15,8 +15,12 @@ import { AppContext } from './context/AppContext'
 import Features from './pages/Features';
 
 const App = () => {
-
   const {showLogin, isAuthenticated} = useContext(AppContext);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <div className='px-4 sm:px-10 md:px-14 lg:px-28 min-h-screen bg-gradient-to-b from-teal-50 to-orange-50'> 
