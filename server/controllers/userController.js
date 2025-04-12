@@ -62,15 +62,38 @@ const loginUser = async (req, res) =>{
 }
 
 
-const userCredits = async(req, res)=>{
+const userCredits = async(req, res) => {
     try {
-        const {userId} = req.body
+        const userId = req.user.id;  // Get userId from auth middleware
 
-        const user = await userModel.findById(userId)
-        res.json({success:true, credits: user.creditBalance, user:{name:user.name}});
+        if (!userId) {
+            console.error('No user ID provided');
+            return res.json({ success: false, message: "User ID not found" });
+        }
+
+        const user = await userModel.findById(userId);
+        
+        if (!user) {
+            console.error('User not found:', userId);
+            return res.json({ success: false, message: "User not found" });
+        }
+
+        // Initialize creditBalance if it doesn't exist
+        if (user.creditBalance === undefined) {
+            user.creditBalance = 0;
+            await user.save();
+        }
+
+        console.log('Found user:', { userId, credits: user.creditBalance, name: user.name });
+        
+        res.json({
+            success: true,
+            credits: user.creditBalance,
+            user: { name: user.name }
+        });
     } catch (error) {
-        console.log(error)
-        res.json({success:false, message: error.message});
+        console.error('Error in userCredits:', error);
+        res.json({ success: false, message: error.message });
     }
 }
 
