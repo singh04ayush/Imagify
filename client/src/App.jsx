@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import Home from './pages/Home'
 import Result from './pages/Result'
+import GenerationResult from './pages/GenerationResult'
 import BuyCredit from './pages/BuyCredit'
 import Gallery from './pages/Gallery'
 import Dashboard from './pages/Dashboard'
@@ -26,6 +27,7 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/dashboard' element={isAuthenticated ? <Dashboard /> : <Navigate to="/" replace />} />
         <Route path='/result' element={<Result />} />
+        <Route path='/result/:id' element={isAuthenticated ? <GenerationResult /> : <Navigate to="/" replace />} />
         <Route path='/buy' element={<BuyCredit />} />
         <Route path='/gallery' element={<Gallery />} />
         <Route path='/features' element={<Features />} />

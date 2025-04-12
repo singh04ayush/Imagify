@@ -12,7 +12,6 @@ const Dashboard = () => {
     imagesGenerated: 0,
     favoriteStyles: 0
   });
-  const [recentGenerations, setRecentGenerations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -25,7 +24,6 @@ const Dashboard = () => {
       }
 
       try {
-        // Fetch user credits and generations in parallel
         const [creditsResponse, generationsResponse] = await Promise.all([
           axios.get(`${backendUrl}/api/user/credits`, {
             headers: { token }
@@ -41,7 +39,6 @@ const Dashboard = () => {
             imagesGenerated: generationsResponse.data.totalGenerations || 0,
             favoriteStyles: generationsResponse.data.uniqueStyles || 0
           });
-          setRecentGenerations(generationsResponse.data.recentGenerations || []);
           setError(null);
         } else {
           setError('Failed to fetch dashboard data');
@@ -91,88 +88,156 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Welcome Section */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800">Welcome back, {user?.name}!</h1>
-          <p className="mt-2 text-gray-600">Here's what's happening with your account</p>
-        </div>
-
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-            <h3 className="text-lg font-semibold text-gray-700">Available Credits</h3>
-            <p className="text-3xl font-bold text-teal-600 mt-2">{stats.credits}</p>
-            <Link to="/buy" className="mt-4 inline-block text-teal-600 hover:text-teal-700">
-              Buy More Credits →
-            </Link>
-          </div>
-          <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-            <h3 className="text-lg font-semibold text-gray-700">Images Generated</h3>
-            <p className="text-3xl font-bold text-orange-500 mt-2">{stats.imagesGenerated}</p>
-            <Link to="/gallery" className="mt-4 inline-block text-orange-500 hover:text-orange-600">
-              View Gallery →
-            </Link>
-          </div>
-          <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-            <h3 className="text-lg font-semibold text-gray-700">Favorite Styles</h3>
-            <p className="text-3xl font-bold text-purple-600 mt-2">{stats.favoriteStyles}</p>
-            <Link to="/features" className="mt-4 inline-block text-purple-600 hover:text-purple-700">
-              Explore Styles →
-            </Link>
-          </div>
-        </div>
-
-        {/* Recent Activity */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">Recent Generations</h2>
-          {recentGenerations.length > 0 ? (
-            <div className="space-y-4">
-              {recentGenerations.map((generation) => (
-                <div key={generation._id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                  <div>
-                    <p className="font-medium text-gray-800">{generation.prompt}</p>
-                    <p className="text-sm text-gray-500">
-                      {new Date(generation.createdAt).toLocaleDateString()}
-                    </p>
-                  </div>
-                  <Link 
-                    to={`/result/${generation._id}`} 
-                    className="text-teal-600 hover:text-teal-700"
-                  >
-                    View Result
-                  </Link>
-                </div>
-              ))}
+        {/* Welcome Section with Quick Stats */}
+        <div className="bg-gradient-to-r from-teal-500 to-orange-500 rounded-xl shadow-sm p-8 text-white mb-8">
+          <h1 className="text-3xl font-bold mb-4">Welcome back, {user?.name}! 👋</h1>
+          <p className="text-lg opacity-90 mb-6">Your creative journey continues...</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+              <p className="text-sm opacity-75">Available Credits</p>
+              <p className="text-3xl font-bold">{stats.credits}</p>
             </div>
-          ) : (
-            <div className="text-center py-8">
-              <p className="text-gray-500">No generations yet. Start creating!</p>
-              <button 
-                onClick={handleGenerateClick}
-                className="mt-4 inline-block bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700"
-              >
-                Generate Your First Image
-              </button>
+            <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+              <p className="text-sm opacity-75">Images Created</p>
+              <p className="text-3xl font-bold">{stats.imagesGenerated}</p>
             </div>
-          )}
+            <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+              <p className="text-sm opacity-75">Styles Used</p>
+              <p className="text-3xl font-bold">{stats.favoriteStyles}</p>
+            </div>
+          </div>
         </div>
 
-        {/* Quick Actions */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Quick Actions Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <button 
             onClick={handleGenerateClick}
-            className="bg-gradient-to-r from-teal-500 to-orange-500 text-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow text-left"
+            className="bg-teal-500 text-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all hover:scale-105"
           >
-            <h3 className="text-xl font-semibold">Generate New Image</h3>
-            <p className="mt-2 opacity-90">Create something amazing with AI</p>
+            <div className="text-2xl mb-2">🎨</div>
+            <h3 className="font-semibold">New Creation</h3>
+            <p className="text-sm opacity-90 mt-1">Start generating</p>
           </button>
           <Link 
             to="/gallery" 
-            className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+            className="bg-orange-500 text-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all hover:scale-105"
           >
-            <h3 className="text-xl font-semibold text-gray-800">Your Gallery</h3>
-            <p className="mt-2 text-gray-600">View and manage your creations</p>
+            <div className="text-2xl mb-2">🖼️</div>
+            <h3 className="font-semibold">Gallery</h3>
+            <p className="text-sm opacity-90 mt-1">View your work</p>
           </Link>
+          <Link 
+            to="/buy" 
+            className="bg-purple-500 text-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all hover:scale-105"
+          >
+            <div className="text-2xl mb-2">⭐</div>
+            <h3 className="font-semibold">Get Credits</h3>
+            <p className="text-sm opacity-90 mt-1">Power up</p>
+          </Link>
+          <Link 
+            to="/features" 
+            className="bg-blue-500 text-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all hover:scale-105"
+          >
+            <div className="text-2xl mb-2">✨</div>
+            <h3 className="font-semibold">Features</h3>
+            <p className="text-sm opacity-90 mt-1">Learn more</p>
+          </Link>
+        </div>
+
+        {/* AI Tips & Inspiration */}
+        <div className="bg-gradient-to-br from-white to-teal-50 rounded-xl shadow-sm p-6 border border-gray-100 mb-8">
+          <h2 className="text-xl font-semibold text-gray-800 mb-6">AI Tips & Inspiration</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-lg p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="text-teal-600 text-lg mb-3">✨ Prompt Engineering</div>
+              <p className="text-gray-600 mb-3">Be specific with details like style, mood, lighting, and perspective for better results.</p>
+              <button 
+                onClick={handleGenerateClick}
+                className="text-teal-600 hover:text-teal-700 text-sm font-medium"
+              >
+                Try Now →
+              </button>
+            </div>
+            
+            <div className="bg-white rounded-lg p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="text-orange-500 text-lg mb-3">🎨 Style Mixing</div>
+              <p className="text-gray-600 mb-3">Combine different art styles like "watercolor meets cyberpunk" for unique creations.</p>
+              <button 
+                onClick={handleGenerateClick}
+                className="text-orange-500 hover:text-orange-600 text-sm font-medium"
+              >
+                Try Now →
+              </button>
+            </div>
+            
+            <div className="bg-white rounded-lg p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div className="text-purple-600 text-lg mb-3">🌟 Pro Tips</div>
+              <p className="text-gray-600 mb-3">Use descriptive adjectives and reference specific artists or time periods for inspiration.</p>
+              <button 
+                onClick={handleGenerateClick}
+                className="text-purple-600 hover:text-purple-700 text-sm font-medium"
+              >
+                Try Now →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Resources & Help */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">Quick Tutorial</h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center text-teal-600 flex-shrink-0">1</div>
+                <div>
+                  <p className="font-medium text-gray-800">Choose Your Style</p>
+                  <p className="text-gray-600 text-sm">Browse through our collection of AI art styles</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 flex-shrink-0">2</div>
+                <div>
+                  <p className="font-medium text-gray-800">Write Your Prompt</p>
+                  <p className="text-gray-600 text-sm">Describe what you want to create in detail</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 flex-shrink-0">3</div>
+                <div>
+                  <p className="font-medium text-gray-800">Generate & Share</p>
+                  <p className="text-gray-600 text-sm">Create your image and share it with the world</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">Need Help?</h3>
+            <div className="space-y-4">
+              <Link to="/features" className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50">
+                <div className="text-2xl">📚</div>
+                <div>
+                  <p className="font-medium text-gray-800">Documentation</p>
+                  <p className="text-gray-600 text-sm">Learn about all features</p>
+                </div>
+              </Link>
+              <a href="#support" className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50">
+                <div className="text-2xl">💬</div>
+                <div>
+                  <p className="font-medium text-gray-800">Support</p>
+                  <p className="text-gray-600 text-sm">Get help when you need it</p>
+                </div>
+              </a>
+              <Link to="/buy" className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50">
+                <div className="text-2xl">⭐</div>
+                <div>
+                  <p className="font-medium text-gray-800">Premium Features</p>
+                  <p className="text-gray-600 text-sm">Unlock more possibilities</p>
+                </div>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
