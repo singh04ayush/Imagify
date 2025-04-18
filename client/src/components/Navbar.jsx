@@ -218,15 +218,19 @@ const Navbar = () => {
                         <div className="md:hidden">
                             <button
                                 onClick={toggleMobileMenu}
+                                onKeyDown={(e) => handleKeyDown(e, toggleMobileMenu)}
                                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-gray-50/50 transition-colors"
                                 aria-label="Toggle menu"
                                 aria-expanded={isOpen}
+                                aria-controls="mobile-menu"
+                                tabIndex={0}
                             >
                                 <svg
                                     className="h-6 w-6"
                                     stroke="currentColor"
                                     fill="none"
                                     viewBox="0 0 24 24"
+                                    aria-hidden="true"
                                 >
                                     {isOpen ? (
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
