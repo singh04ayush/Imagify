@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect, useRef } from 'react'
 import { assets } from '../assets/assets'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
+import { toast } from 'react-toastify'
 
 const Navbar = () => {
     const { user, setShowLogin, logout, credit } = useContext(AppContext);
@@ -65,6 +66,27 @@ const Navbar = () => {
     // Close mobile menu
     const closeMobileMenu = () => {
         setIsOpen(false);
+    };
+
+    // Handle credit check
+    const handleCreateImage = () => {
+        if (credit > 0) {
+            navigate('/result');
+            closeMobileMenu();
+        } else {
+            toast.info('You need credits to create new images. Redirecting to upgrade...', {
+                position: "bottom-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+            setTimeout(() => {
+                navigate('/buy');
+                closeMobileMenu();
+            }, 1000);
+        }
     };
 
     return (
@@ -249,16 +271,7 @@ const Navbar = () => {
                                     </span>
                                 </div>
                                 <button
-                                    onClick={() => {
-                                        if (credit > 0) {
-                                            navigate('/result');
-                                            closeMobileMenu();
-                                        } else {
-                                            alert('You need credits to create new images. Please upgrade your plan to get more credits.');
-                                            navigate('/buy');
-                                            closeMobileMenu();
-                                        }
-                                    }}
+                                    onClick={handleCreateImage}
                                     className="w-full text-left px-3 py-2 text-base font-medium text-blue-600 hover:bg-blue-50/50 rounded-md transition-colors"
                                 >
                                     Create New Image
