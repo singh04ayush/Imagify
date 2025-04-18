@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect, useRef } from 'react'
 import { assets } from '../assets/assets'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const { user, setShowLogin, logout, credit } = useContext(AppContext);
