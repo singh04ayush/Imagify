@@ -91,15 +91,15 @@ const Footer = () => {
                         <p className="text-sm text-gray-600 mb-3">
                             Subscribe for the latest updates and features.
                         </p>
-                        <form className="flex">
+                        <form className="flex flex-col sm:flex-row gap-2 sm:gap-0">
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="flex-1 px-3 py-2 text-sm text-gray-600 bg-white border border-gray-200 rounded-l-lg focus:outline-none focus:border-blue-500"
+                                className="w-full flex-1 px-4 py-2.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg sm:rounded-r-none focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                             />
                             <button
                                 type="submit"
-                                className="px-4 py-2 text-sm text-white bg-blue-600 rounded-r-lg hover:bg-blue-700 focus:outline-none transition-colors whitespace-nowrap"
+                                className="w-full sm:w-auto px-6 py-2.5 text-sm font-medium text-white bg-blue-600 rounded-lg sm:rounded-l-none hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors whitespace-nowrap"
                             >
                                 Subscribe
                             </button>

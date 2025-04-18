@@ -27,7 +27,7 @@ const Navbar = () => {
             if (profileRef.current && !profileRef.current.contains(event.target)) {
                 setIsProfileOpen(false);
             }
-            if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+            if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target) && !event.target.closest('[aria-label="Toggle menu"]')) {
                 setIsOpen(false);
             }
         };
@@ -51,6 +51,20 @@ const Navbar = () => {
             navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
             setSearchQuery('');
         }
+    };
+
+    // Toggle mobile menu
+    const toggleMobileMenu = (e) => {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        setIsOpen(!isOpen);
+    };
+
+    // Close mobile menu
+    const closeMobileMenu = () => {
+        setIsOpen(false);
     };
 
     return (
@@ -181,8 +195,7 @@ const Navbar = () => {
                         {/* Mobile menu button */}
                         <div className="md:hidden">
                             <button
-                                onClick={() => setIsOpen(!isOpen)}
-                                onKeyDown={(e) => handleKeyDown(e, () => setIsOpen(!isOpen))}
+                                onClick={toggleMobileMenu}
                                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-blue-600 hover:bg-gray-50/50 transition-colors"
                                 aria-label="Toggle menu"
                                 aria-expanded={isOpen}
@@ -223,7 +236,7 @@ const Navbar = () => {
                                         ? 'text-blue-600 bg-blue-50/50'
                                         : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50/50'
                                 }`}
-                                onClick={() => setIsOpen(false)}
+                                onClick={closeMobileMenu}
                             >
                                 {item.name}
                             </Link>
@@ -237,8 +250,14 @@ const Navbar = () => {
                                 </div>
                                 <button
                                     onClick={() => {
-                                        navigate('/result');
-                                        setIsOpen(false);
+                                        if (credit > 0) {
+                                            navigate('/result');
+                                            closeMobileMenu();
+                                        } else {
+                                            alert('You need credits to create new images. Please upgrade your plan to get more credits.');
+                                            navigate('/buy');
+                                            closeMobileMenu();
+                                        }
                                     }}
                                     className="w-full text-left px-3 py-2 text-base font-medium text-blue-600 hover:bg-blue-50/50 rounded-md transition-colors"
                                 >
@@ -249,7 +268,7 @@ const Navbar = () => {
                             <button
                                 onClick={() => {
                                     setShowLogin(true);
-                                    setIsOpen(false);
+                                    closeMobileMenu();
                                 }}
                                 className="w-full text-left px-3 py-2 text-base font-medium text-blue-600 hover:bg-blue-50/50 rounded-md transition-colors"
                             >
