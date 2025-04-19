@@ -3,10 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { motion } from 'framer-motion';
 
 const Dashboard = () => {
   const { user, token, backendUrl } = useContext(AppContext);
   const navigate = useNavigate();
+  const [isNameHovered, setIsNameHovered] = useState(false);
   const [stats, setStats] = useState({
     credits: 0,
     imagesGenerated: 0,
@@ -110,22 +112,120 @@ const Dashboard = () => {
     <div className="min-h-screen py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Welcome Section with Quick Stats */}
-        <div className="bg-gradient-to-r from-teal-500 to-orange-500 rounded-xl shadow-sm p-8 text-white mb-8">
-          <h1 className="text-3xl font-bold mb-4">Welcome back, {user?.name}! 👋</h1>
-          <p className="text-lg opacity-90 mb-6">Your creative journey continues...</p>
+        <div className="bg-gradient-to-r from-teal-500 to-orange-500 rounded-xl shadow-sm p-8 text-white mb-8 relative overflow-hidden">
+          {/* Animated background elements */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent"
+            animate={{
+              x: ['-100%', '100%'],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+          
+          <h1 className="text-3xl font-bold mb-4 relative">
+            <motion.span
+              className="inline-block cursor-default relative bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-transparent bg-clip-text"
+              whileHover={{
+                scale: 1.02,
+                textShadow: "0 0 8px rgba(255,255,255,0.3)",
+                backgroundSize: "200% 100%",
+              }}
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "linear",
+                backgroundPosition: {
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "linear"
+                }
+              }}
+            >
+              Welcome back,
+            </motion.span>{' '}
+            <motion.span
+              className="inline-block cursor-pointer relative text-white font-bold"
+              whileHover={{
+                scale: 1.05,
+                textShadow: "0 0 12px rgba(255,255,255,0.5)",
+                transition: {
+                  duration: 0.2
+                }
+              }}
+            >
+              <span className="relative">
+                <span className="relative z-10 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text"
+                  style={{
+                    WebkitTextFillColor: 'transparent',
+                    backgroundSize: '200% 100%',
+                    animation: 'gradient 3s linear infinite'
+                  }}>
+                  {user?.name}
+                </span>
+                <motion.div
+                  className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+                  initial={{ scaleX: 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </span>
+            </motion.span>
+            !{' '}
+            <motion.span
+              animate={{
+                rotate: [0, -10, 10, -10, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                repeatType: "reverse"
+              }}
+            >
+              👋
+            </motion.span>
+          </h1>
+          
+          <motion.p 
+            className="text-lg opacity-90 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            Your creative journey continues...
+          </motion.p>
+          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+            <motion.div 
+              className="bg-white/10 rounded-lg p-4 backdrop-blur-sm"
+              whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.15)' }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            >
               <p className="text-sm opacity-75">Available Credits</p>
               <p className="text-3xl font-bold">{stats.credits}</p>
-            </div>
-            <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+            </motion.div>
+            <motion.div 
+              className="bg-white/10 rounded-lg p-4 backdrop-blur-sm"
+              whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.15)' }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            >
               <p className="text-sm opacity-75">Images Created</p>
               <p className="text-3xl font-bold">{stats.imagesGenerated}</p>
-            </div>
-            <div className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+            </motion.div>
+            <motion.div 
+              className="bg-white/10 rounded-lg p-4 backdrop-blur-sm"
+              whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.15)' }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            >
               <p className="text-sm opacity-75">Styles Used</p>
               <p className="text-3xl font-bold">{stats.favoriteStyles}</p>
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -261,6 +361,13 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          100% { background-position: 200% 50%; }
+        }
+      `}</style>
     </div>
   );
 };
