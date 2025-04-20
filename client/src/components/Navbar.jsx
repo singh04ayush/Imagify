@@ -90,7 +90,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className='sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm' id='nav-bar' role="navigation">
+        <nav className='sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm' id='nav-bar' role="navigation">
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                 <div className='flex items-center justify-between h-16'>
                     {/* Left side - Logo */}
