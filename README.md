@@ -9,14 +9,9 @@
 [![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=for-the-badge&logo=react&logoColor=white&labelColor=20232A)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-6.2.0-646CFF?style=for-the-badge&logo=vite&logoColor=white&labelColor=20232A)](https://vitejs.dev/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0.15-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white&labelColor=20232A)](https://tailwindcss.com/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white&labelColor=20232A)](https://www.typescriptlang.org/)
+[![Express.js](https://img.shields.io/badge/Express-4.18.0-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
 
-<p align="center">
-  <a href="#features">Features</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#usage">Usage</a> •
-  <a href="#contributing">Contributing</a>
-</p>
+
 
 [![GitHub stars](https://img.shields.io/github/stars/singh04ayush/imagify?style=social)](https://github.com/singh04ayush/imagify/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/singh04ayush/imagify?style=social)](https://github.com/singh04ayush/imagify/network/members)
