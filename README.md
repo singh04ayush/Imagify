@@ -2,7 +2,7 @@
 
 <img src="client/public/favicon.svg" alt="Imagify Logo" width="180"/>
 
-# ✨ Imagify - Transform Your Images Magically ✨
+# ✨ Imagify - AI Transforming Your Images Magically ✨
 
 > 🎨 Where Creativity Meets Technology
 
