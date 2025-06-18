@@ -19,15 +19,15 @@ const Footer = () => {
                             Turn your imagination into visual art in seconds with our AI-powered platform.
                         </p>
                         <div className="flex items-center gap-3">
-                            <a href="https://github.com/singh04ayush/Imagify" className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
+                            <a href="https://github.com/phoenixdev100/Imagify" className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
                                 <img src={assets.github_icon} alt="github" className="w-4 h-4" />
                             </a>
-                            <a href="https://www.linkedin.com/in/ayush-singh-87b3682a5/" className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
+                            <a href="https://www.linkedin.com/in/phoenixdev100/" className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
                                 <img src={assets.linkedin_icon} alt="linkedin" className="w-4 h-4" />
                             </a>
-                            <a href="https://www.instagram.com/singh04_ayush/" className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
+{/*                             <a href="https://www.instagram.com/singh04_ayush/" className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
                                 <img src={assets.instagram_icon} alt="Instagram" className="w-4 h-4" />
-                            </a>
+                            </a> */}
                         </div>
                     </div>
 
