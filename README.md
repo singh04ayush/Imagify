@@ -4,7 +4,7 @@
 
 # ✨ Imagify - AI Transforming Your Images Magically ✨
 
-> 🎨 Where Creativity Meets Technology
+> 🎨 Where Creativity Meet Technology
 
 [![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=for-the-badge&logo=react&logoColor=white&labelColor=20232A)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-6.2.0-646CFF?style=for-the-badge&logo=vite&logoColor=white&labelColor=20232A)](https://vitejs.dev/)
