@@ -16,7 +16,6 @@ const userAuth = async(req, res, next) => {
                 message: 'Authentication required. Please login.'
             });
         }
-
         const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);
 
         // Only log in non-production environments

@@ -10,6 +10,7 @@ export const generateImage = async (req, res) => {
         const userId = req.user.id;
 
         const user = await userModel.findById(userId);
+        console.log(user);
 
         if (!user || !prompt) {
             return res.json({ success: false, message: "Missing details" });
@@ -28,6 +29,7 @@ export const generateImage = async (req, res) => {
             },
             responseType: 'arraybuffer'
         });
+        console.log(data);
 
         const base64Image = Buffer.from(data, 'binary').toString('base64');
         const resultImage = `data:image/png;base64,${base64Image}`;
@@ -42,17 +44,23 @@ export const generateImage = async (req, res) => {
             imageUrl: resultImage
         });
 
-        res.json({ 
-            success: true, 
-            message: "Image Generated", 
-            creditBalance: user.creditBalance - 1, 
+        res.json({
+            success: true,
+            message: "Image Generated",
+            creditBalance: user.creditBalance - 1,
             resultImage,
             generationId: newGeneration._id
         });
 
     } catch (error) {
-        console.error('Error in generateImage:', error);
-        return res.json({ success: false, message: error.message });
+        console.error('ClipDrop API Error:', error.response?.data || error.message);
+        if (error.response?.status === 403) {
+            return res.status(403).json({
+                success: false,
+                message: "Invalid or revoked API key. Please check your ClipDrop API key configuration."
+            });
+        }
+        res.status(500).json({ success: false, message: "Error generating image" });
     }
 };
 
