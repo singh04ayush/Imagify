@@ -19,15 +19,15 @@ const Footer = () => {
                             Turn your imagination into visual art in seconds with our AI-powered platform.
                         </p>
                         <div className="flex items-center gap-3">
-                            <a href="https://github.com/singh04ayush/Imagify" className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
+                            <a href="https://github.com/phoenixdev100/Imagify" className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
                                 <img src={assets.github_icon} alt="github" className="w-4 h-4" />
                             </a>
-                            <a href="https://www.linkedin.com/in/ayush-singh-87b3682a5/" className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
+                            <a href="https://www.linkedin.com/in/phoenixdev100/" className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
                                 <img src={assets.linkedin_icon} alt="linkedin" className="w-4 h-4" />
                             </a>
-                            <a href="https://www.instagram.com/singh04_ayush/" className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
+{/*                             <a href="https://www.instagram.com/singh04_ayush/" className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 hover:border-gray-400 transition-colors">
                                 <img src={assets.instagram_icon} alt="Instagram" className="w-4 h-4" />
-                            </a>
+                            </a> */}
                         </div>
                     </div>
 
@@ -91,15 +91,15 @@ const Footer = () => {
                         <p className="text-sm text-gray-600 mb-3">
                             Subscribe for the latest updates and features.
                         </p>
-                        <form className="flex">
+                        <form className="flex flex-col sm:flex-row gap-2 sm:gap-0">
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="flex-1 px-3 py-2 text-sm text-gray-600 bg-white border border-gray-200 rounded-l-lg focus:outline-none focus:border-blue-500"
+                                className="w-full flex-1 px-4 py-2.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg sm:rounded-r-none focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                             />
                             <button
                                 type="submit"
-                                className="px-4 py-2 text-sm text-white bg-blue-600 rounded-r-lg hover:bg-blue-700 focus:outline-none transition-colors whitespace-nowrap"
+                                className="w-full sm:w-auto px-6 py-2.5 text-sm font-medium text-white bg-blue-600 rounded-lg sm:rounded-l-none hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors whitespace-nowrap"
                             >
                                 Subscribe
                             </button>
